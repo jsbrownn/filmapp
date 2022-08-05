@@ -57,7 +57,7 @@ const CardList = ({ cards, title }) => {
 // },[current])
   return (
     <>
-      <h1 className="text-xl">{title}</h1>
+      <h1 className="font-bold  text-gray-500">{title}</h1>
       <Slider {...settings} ref={slider}>
         {
         cards?

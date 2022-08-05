@@ -49,8 +49,9 @@ const AppProvider = ({children}) => {
       const{total_pages} = data
 
       //проверка на количество страниц
-
-      if (state[collection] && page === 1 || page >= total_pages ){
+        console.trace(page)
+      if ( state[collection] && page === 1){
+        console.log('break')
         return
       }
       dispatch({

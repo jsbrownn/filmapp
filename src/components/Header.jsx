@@ -30,14 +30,14 @@ function Header() {
                 />
               </Link>
               <div className="-mr-2 flex items-center md:hidden">
-                <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <Popover.Button className="bg-white rounded-md p-1 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                   <span className="sr-only">Open main menu</span>
                   <MenuIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
               </div>
             </div>
           </div>
-          <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-4">
+          <div className="hidden md:block md:ml-4 md:pr-4 md:space-x-4 sm:space-x-2" >
           <Input/>
             {navLinks.map((item) => (
               <Link key={item.name} to={item.to} className="font-medium text-indigo-600 hover:text-gray-900">

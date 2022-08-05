@@ -43,7 +43,7 @@ function Movies() {
 
   return (
     <div>
-      <h1 className='text-slate-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight  dark:text-white'>{path.toUpperCase()}</h1>
+      <h1 className='text-slate-900 mb-2 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight '>{path.toUpperCase()}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {
         films &&
