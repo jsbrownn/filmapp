@@ -50,7 +50,7 @@ const AppProvider = ({children}) => {
 
       //проверка на количество страниц
 
-      if(page >= total_pages){
+      if (state[collection] && page === 1 || page >= total_pages ){
         return
       }
       dispatch({
