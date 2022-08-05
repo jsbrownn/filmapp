@@ -1,0 +1,7 @@
+export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE'
+export const START_REQUEST = 'START_REQUEST'
+export const GET_MOVIES = 'GET_MOVIES'
+export const FIND_MOVIE = 'FIND_MOVIE'
+export const GET_TRAILERS = 'GET_TRAILERS'
+export const REQUEST_ERROR = 'REQUEST_ERROR'
+export const NEXT_PAGE = 'NEXT_PAGE'

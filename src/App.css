@@ -1,0 +1,9 @@
+.card { 
+  background-color: grey;
+  width:200px;
+  height: 100px;
+
+}
+.slick-slide{
+  margin: 10px;
+}
