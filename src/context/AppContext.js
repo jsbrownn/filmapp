@@ -9,8 +9,10 @@ import {
   CHANGE_LANGUAGE,
   GET_MOVIES,
   GET_TRAILERS,
+  GET_RECOMMENDATIONS,
   FIND_MOVIE,
-  NEXT_PAGE
+  NEXT_PAGE,
+
 } from "./actions";
 
 
@@ -22,6 +24,7 @@ const initialState = {
   error: null,
   currentMovie:"",
   trailersPath:{},
+  recommendations:[],
   language:'en-US'
 }
 
@@ -113,7 +116,30 @@ const AppProvider = ({children}) => {
   }
   
   }
-  
+
+  const getRecommendations = async (movie_id) => { 
+    dispatch({type:START_REQUEST})
+    try {
+      
+      const {data} = await TMDbFetch(`${movie_id}/recommendations?`,{
+        params: {
+          language:state.language,
+        }
+      })
+      dispatch({
+        type:GET_RECOMMENDATIONS,
+        payload: {
+          recommendations:data.results
+        }
+      })
+
+    } catch (error) {
+      dispatch({
+        type:REQUEST_ERROR,
+        payload: {error:error.message}
+    })
+    }
+  }
 
   return(
     <AppContext.Provider value ={{
@@ -121,6 +147,7 @@ const AppProvider = ({children}) => {
       getMovies,
       findMovieById,
       getTrailersPath,
+      getRecommendations
     }}>
       {children}
     </AppContext.Provider>

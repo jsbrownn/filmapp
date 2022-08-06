@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player/youtube'
 import { useParams } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext'
-import { Poster } from '../components'
+import { Poster, CardList } from '../components'
 import { Select, SelectTailwind } from '../components/UI'
 
 
@@ -13,6 +13,8 @@ const Movie = () => {
     findMovieById,
     getTrailersPath,
     currentMovie,
+    getRecommendations,
+    recommendations,
     trailersPath
   } = useAppContext()
 
@@ -25,7 +27,7 @@ const Movie = () => {
     budget,
     production_companies,
     release_date,
-    genres
+    genres,
   } = currentMovie
 
   const [youtubeId, setYouTubeId] = useState()
@@ -43,6 +45,10 @@ const Movie = () => {
     return () => fetchMovie(id)
   }
     , [id])
+
+  useEffect(() => {
+    getRecommendations(id)
+  }, [recommendations, id])
   console.log(currentMovie)
   return (
     <>
@@ -51,11 +57,10 @@ const Movie = () => {
           ?
           <>
             <div className="flex-column">
-              <div className="mb-20 flex-column sm:flex ">
+              <div className="flex-column sm:flex ">
                 <div className="flex">
                   <Poster path={poster_path} title={title} />
                 </div>
-
                 <div className="sm:ml-10 flex flex-col justify-between">
                   <div className="">
                     <h2 className="font-bold text-3xl text-center tracking-widest">{title}</h2>
@@ -66,11 +71,11 @@ const Movie = () => {
                     <div className="">release date: {release_date}</div>
                     <div className="">budget:{budget}$</div>
                     <div className="">genres: {genres.map(item => <span>{item.name}, </span>)}</div>
-                    <div className="">
+                    <div className="mt-5">
                       productions:{
                         production_companies.map(company => {
                           return (
-                            <div className="flex" key={company.id}>
+                            <div className="flex my-5" key={company.id}>
                               <img className="w-16 h-auto mr-10"
                                 src={`https://image.tmdb.org/t/p/w500/${company.logo_path}`} />
                               <div className="">{company.name}</div>
@@ -79,7 +84,6 @@ const Movie = () => {
                         })
                       }
                     </div>
-
                     <p className="my-10">{overview}</p>
                     {
                       trailersPath.results
@@ -89,23 +93,23 @@ const Movie = () => {
                         setYouTubeId={setYouTubeId} />
                     }
                   </div>
-
                 </div>
               </div>
-              {/*plaeyer*/}
               {
                 trailersPath.results
                 &&
-                <div className="flex justify-center w-full h-auto h-max-360px rounded overflow-hidden shadow-lg">
-                  <ReactPlayer controls url={`https://www.youtube.com/watch?v=${youtubeId}`} className="" />
+                <div className="flex justify-center w-full h-auto my-20">
+                  <div className=" h-max-360px rounded overflow-hidden shadow-lg ">
+                    <ReactPlayer controls url={`https://www.youtube.com/watch?v=${youtubeId}`} />
+                  </div>
                 </div>
-
               }
-
-
+              {recommendations
+                &&
+                <CardList cards={recommendations} title="Recommendations" />
+              }
             </div>
           </>
-
           :
           <div>Loading...</div>
       }

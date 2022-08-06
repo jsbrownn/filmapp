@@ -6,7 +6,8 @@ import {
   GET_MOVIES,
   GET_TRAILERS,
   FIND_MOVIE,
-  NEXT_PAGE
+  NEXT_PAGE,
+  GET_RECOMMENDATIONS
 } from './actions'
 
 const reducer =(state,action)=>{
@@ -71,6 +72,13 @@ const reducer =(state,action)=>{
         page: state.page += 1
       }
     
+  }
+  if(action.type === GET_RECOMMENDATIONS){
+    return { 
+      ...state, 
+      isLoading:false, 
+      recommendations: action.payload.recommendations
+    }
   }
   
 
