@@ -4,6 +4,7 @@ import Footer from './Footer'
 import CardList from './CardList'
 import Card from './Card'
 import Poster from './Poster'
+import SwitchIcon from './SwitchIcon'
 
 
 export {
@@ -12,4 +13,6 @@ export {
   Footer,
   CardList,
   Card,
-  Poster} 
+  Poster,
+  SwitchIcon
+} 

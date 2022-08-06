@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon,GlobeIcon } from "@heroicons/react/outline";
 import {Input} from './UI'
+import {SwitchIcon} from '../components'
 import navigation from "../utils/constants";
 
 function Header() {
@@ -17,7 +18,7 @@ function Header() {
 
   return (
     <Popover>
-      <div className="relative py-3 px-4 sm:px-6 lg:px-8 bg-gray-300">
+      <div className="relative py-3 px-3 sm:px-4 lg:px-8 bg-gray-300">
         <nav className="relative flex items-center justify-between sm:h-10 lg:space-between" aria-label="Global">
           <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
             <div className="flex items-center justify-between w-full md:w-auto">
@@ -37,18 +38,18 @@ function Header() {
               </div>
             </div>
           </div>
-          <div className="hidden md:block md:ml-4 md:pr-4 md:space-x-4 sm:space-x-2" >
+          <div className="hidden md:block md:ml-4   sm:space-x-2" >
           <Input/>
             {navLinks.map((item) => (
               <Link key={item.name} to={item.to} className="font-medium text-indigo-600 hover:text-gray-900">
                 {item.name}
               </Link>
             ))}
-            
             {/* switch language*/}
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-  <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-</svg>
+          
+          </div> 
+          <div className="hidden md:block ml-2">
+            <SwitchIcon />
           </div>
         </nav>
       </div>
