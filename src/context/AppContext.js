@@ -22,7 +22,7 @@ const initialState = {
   error: null,
   currentMovie:"",
   trailersPath:{},
-  language:'ru-RU'
+  language:'en-US'
 }
 
 const AppContext = React.createContext()

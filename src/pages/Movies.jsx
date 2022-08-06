@@ -25,10 +25,11 @@ function Movies() {
 
   useEffect(
     () => {
-      if(fetching || page === 1) {
+      if(fetching || !films) {
         getMovies(path, page)
         setPage(prev=>prev + 1)
       }
+    
       setFetching(false)
     },
     [fetching,path])
