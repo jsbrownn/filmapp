@@ -1,9 +1,5 @@
-.card { 
-  background-color: grey;
-  width:200px;
-  height: 100px;
-
-}
-.slick-slide{
-  margin: 10px;
+html,body{
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
 }
